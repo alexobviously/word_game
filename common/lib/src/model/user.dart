@@ -4,7 +4,7 @@ import 'package:mongo_dart/mongo_dart.dart';
 
 part 'user.g.dart';
 
-@CopyWith(generateCopyWithNull: true)
+@CopyWith(copyWithNull: true)
 class User implements Entity {
   @override
   final String id;

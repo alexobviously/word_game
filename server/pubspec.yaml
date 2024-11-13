@@ -1,11 +1,10 @@
 name: word_game_server
 description: A simple command-line application.
-version: 0.6.0
+version: 0.7.0
 publish_to: 'none'
 
 environment:
-  sdk: '>=2.17.0 <3.0.0'
-
+  sdk: ">=3.5.0 <4.0.0"
 
 dependencies:
   common:
@@ -14,17 +13,17 @@ dependencies:
   bloc: ^8.0.2
   dart_dotenv: ^1.0.1
   dbcrypt: ^2.0.0
-  get_it: ^7.2.0
+  get_it: ^8.0.2
   jaguar_jwt: ^3.0.0
-  mongo_dart: 0.8.2
-  rxdart: ^0.27.3
-  shelf: ^1.2.0
+  mongo_dart: ^0.10.3
+  rxdart: ^0.28.0
+  shelf: ^1.4.2
   shelf_cors_headers: ^0.1.2
   shelf_router: ^1.1.2
-  shelf_web_socket: ^1.0.1
-  uuid: ^3.0.5
+  shelf_web_socket: ^2.0.0
+  uuid: ^4.5.1
   validators: ^3.0.0
-  web_socket_channel: ^2.1.0
+  web_socket_channel: ^3.0.1
   yaml: ^3.1.0
 
 dev_dependencies:
