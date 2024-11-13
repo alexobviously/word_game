@@ -4,6 +4,7 @@ class ServerMeta {
   final String appCurrentVersion;
   final String appMinVersion;
   final String serverName;
+
   const ServerMeta({
     this.loaded = true,
     required this.serverVersion,
@@ -11,6 +12,7 @@ class ServerMeta {
     required this.appMinVersion,
     required this.serverName,
   });
+
   factory ServerMeta.initial() => ServerMeta(
         loaded: false,
         serverVersion: '0.0.0',
@@ -18,6 +20,7 @@ class ServerMeta {
         appMinVersion: '0.0.0',
         serverName: 'lexicle',
       );
+
   factory ServerMeta.fromJson(Map<String, dynamic> doc) => ServerMeta(
         serverVersion: doc['version'],
         appCurrentVersion: doc['appCurrentVersion'],

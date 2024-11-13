@@ -15,11 +15,11 @@ extension GetMaterialTheme on NeumorphicThemeData {
 
     return ThemeData(
       primaryColor: accentColor,
-      accentColor: variantColor,
+      // accentColor: variantColor,
       iconTheme: iconTheme,
       brightness: ThemeData.estimateBrightnessForColor(baseColor),
-      primaryColorBrightness: ThemeData.estimateBrightnessForColor(accentColor),
-      accentColorBrightness: ThemeData.estimateBrightnessForColor(variantColor),
+      // primaryColorBrightness: ThemeData.estimateBrightnessForColor(accentColor),
+      // accentColorBrightness: ThemeData.estimateBrightnessForColor(variantColor),
       textTheme: textTheme,
       scaffoldBackgroundColor: baseColor,
     );

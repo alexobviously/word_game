@@ -27,7 +27,7 @@ class ColourSchemePair {
   int get hashCode => light.hashCode ^ dark.hashCode;
 
   @override
-  bool operator ==(Object? other) => other is ColourSchemePair && other.light == light && other.dark == dark;
+  bool operator ==(Object other) => other is ColourSchemePair && other.light == light && other.dark == dark;
 }
 
 class ColourScheme {

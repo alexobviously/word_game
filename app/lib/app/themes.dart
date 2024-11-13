@@ -12,7 +12,7 @@ ThemeData darkTheme = ThemeData(
     displayColor: Colors.grey[300],
     decorationColor: Colors.grey[300],
   ),
-  backgroundColor: const Color(0xFF252525),
+  scaffoldBackgroundColor: const Color(0xFF252525),
   iconTheme: IconThemeData(color: Colors.grey[300]),
 );
 

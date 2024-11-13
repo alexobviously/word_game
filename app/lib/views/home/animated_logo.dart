@@ -52,7 +52,7 @@ class _AnimatedLogoState extends State<AnimatedLogo> {
       child: WordRow(
         length: 7,
         content: 'Lexicle',
-        textStyle: textTheme.headline3!.copyWith(
+        textStyle: textTheme.headlineMedium!.copyWith(
           fontFamily: GoogleFonts.comfortaa().fontFamily,
           fontWeight: FontWeight.w900,
           color: dark ? Colors.grey.shade300 : null,

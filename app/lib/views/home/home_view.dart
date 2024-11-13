@@ -77,6 +77,10 @@ class _HomeViewState extends State<HomeView> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          IconButton(
+                            onPressed: () => context.push(Routes.topPlayers),
+                            icon: Icon(MdiIcons.trophyAward),
+                          ),
                           IconButton(onPressed: () => context.push(Routes.settings), icon: Icon(MdiIcons.cog)),
                           IconButton(onPressed: () {}, icon: Icon(MdiIcons.bell)),
                         ],
