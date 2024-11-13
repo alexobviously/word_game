@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:common/common.dart';
 import 'package:word_game/model/api_response.dart';
-import 'package:rest_client/rest_client.dart' as rc;
+import 'package:http/http.dart' as http;
 import 'package:word_game/model/server_meta.dart';
 import 'package:word_game/services/service_locator.dart';
 
@@ -173,14 +173,10 @@ class ApiClient {
         }
       }
 
-      final req = rc.Request(
-        url: '$host$path',
-        method: rc.RequestMethod.get,
-        headers: headers,
-      );
-      final resp = await rc.Client().execute(request: req);
+      final url = Uri.parse('$host$path');
+      final resp = await http.get(url, headers: headers);
       if (resp.statusCode != 200) return ApiResponse.error('http_${resp.statusCode}');
-      return parseBody(resp.body);
+      return parseBody(jsonDecode(resp.body));
     } catch (e, s) {
       print('ApiClient.get($path), error $e\n$s');
       return ApiResponse.unknownError();
@@ -202,15 +198,10 @@ class ApiClient {
         }
       }
 
-      final req = rc.Request(
-        url: '$host$path',
-        method: rc.RequestMethod.post,
-        body: jsonEncode(body),
-        headers: headers,
-      );
-      final resp = await rc.Client().execute(request: req);
+      final url = Uri.parse('$host$path');
+      final resp = await http.post(url, headers: headers, body: jsonEncode(body));
       if (resp.statusCode != 200) return ApiResponse.error('http_${resp.statusCode}');
-      return parseBody(resp.body);
+      return parseBody(jsonDecode(resp.body));
     } catch (e, s) {
       print('ApiClient.post($path), error $e\n$s');
       return ApiResponse.unknownError();

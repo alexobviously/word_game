@@ -8,4 +8,4 @@ String randomCode() {
   return '$i'.padLeft(6, '0');
 }
 
-String newId() => ObjectId().toHexString();
+String newId() => ObjectId().oid;

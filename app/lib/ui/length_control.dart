@@ -37,21 +37,21 @@ class LengthControl extends StatelessWidget {
       children: [
         IconButton(
           onPressed: canDecrease ? _decrease : null,
-          icon: const Icon(
+          icon: Icon(
             MdiIcons.chevronLeft,
             size: iconSize,
           ),
         ),
         ...List.filled(
           length,
-          const Icon(
+          Icon(
             MdiIcons.cropSquare,
             size: iconSize,
           ),
         ),
         IconButton(
           onPressed: canIncrease ? _increase : null,
-          icon: const Icon(
+          icon: Icon(
             MdiIcons.chevronRight,
             size: iconSize,
           ),

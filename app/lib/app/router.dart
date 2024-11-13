@@ -56,7 +56,7 @@ GoRouter buildRouter() {
       final loggedIn = auth().loggedIn;
       if (loggedIn) return null;
       for (String r in Routes.protectedRoutes) {
-        if (state.subloc.contains(r)) return '${Routes.auth}?r=${state.subloc}';
+        if (state.matchedLocation.contains(r)) return '${Routes.auth}?r=${state.matchedLocation}';
       }
       return null;
     },
@@ -68,7 +68,7 @@ GoRouter buildRouter() {
       GoRoute(
         path: Routes.auth,
         builder: (_, state) {
-          return AuthView(redirect: state.queryParams['r']);
+          return AuthView(redirect: state.uri.queryParameters['r']);
         },
       ),
       GoRoute(
@@ -102,13 +102,13 @@ GoRouter buildRouter() {
       GoRoute(
         path: Routes.user(':id'),
         builder: (context, state) {
-          return ProfileView(id: state.params['id'] ?? '');
+          return ProfileView(id: state.pathParameters['id'] ?? '');
         },
       ),
       GoRoute(
         path: Routes.team(':id'),
         builder: (context, state) {
-          return TeamView(state.params['id'] ?? '');
+          return TeamView(state.pathParameters['id'] ?? '');
         },
       ),
       GoRoute(
@@ -117,7 +117,7 @@ GoRouter buildRouter() {
           GroupRouteData data = GroupRouteData();
           if (state.extra is GroupRouteData) data = state.extra as GroupRouteData;
           return GroupView(
-            id: state.params['id'] ?? '',
+            id: state.pathParameters['id'] ?? '',
             data: data,
           );
         },
@@ -128,7 +128,7 @@ GoRouter buildRouter() {
           GameRouteData data = GameRouteData();
           if (state.extra is GameRouteData) data = state.extra as GameRouteData;
           return GameView(
-            id: state.params['id'] ?? '',
+            id: state.pathParameters['id'] ?? '',
             data: data,
           );
         },
@@ -144,23 +144,24 @@ GoRouter buildRouter() {
       GoRoute(
         path: '${Routes.challenges}/:first',
         builder: (context, state) {
-          if (isInt(state.params['first']!)) {
+          if (isInt(state.pathParameters['first']!)) {
             return ChallengeView(
-              level: int.parse(state.params['first']!) - 1,
+              level: int.parse(state.pathParameters['first']!) - 1,
             );
           } else {
-            return ChallengeView(id: state.params['first']!);
+            return ChallengeView(id: state.pathParameters['first']!);
           }
         },
       ),
       GoRoute(
-          path: '${Routes.challenges}/:level/:sequence',
-          builder: (context, state) {
-            return ChallengeView(
-              level: int.parse(state.params['level']!) - 1,
-              sequence: int.parse(state.params['sequence']!) - 1,
-            );
-          }),
+        path: '${Routes.challenges}/:level/:sequence',
+        builder: (context, state) {
+          return ChallengeView(
+            level: int.parse(state.pathParameters['level']!) - 1,
+            sequence: int.parse(state.pathParameters['sequence']!) - 1,
+          );
+        },
+      ),
     ],
   );
 }

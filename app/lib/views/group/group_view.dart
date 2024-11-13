@@ -50,7 +50,7 @@ class _GroupViewState extends State<GroupView> {
   // GameGroupController get controller => widget.controller;
   TextEditingController wordController = TextEditingController();
   final _scrollControllerGroup = LinkedScrollControllerGroup();
-  List<ScrollController> _scrollControllers = [];
+  final List<ScrollController> _scrollControllers = [];
   final PageController _pageController = PageController();
   bool invalidWord = false;
 
@@ -364,7 +364,7 @@ class _GroupViewState extends State<GroupView> {
                   Container(width: 16.0),
                   NeumorphicButton(
                     onPressed: canSubmit ? _submitWord : null,
-                    child: const Icon(MdiIcons.keyboardReturn),
+                    child: Icon(MdiIcons.keyboardReturn),
                   ),
                 ],
               ),

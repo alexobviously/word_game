@@ -56,7 +56,7 @@ class _DictSearchViewState extends State<DictSearchView> {
                       children: [
                         IconButton(
                           onPressed: state.canDecLength ? _controller.decLength : null,
-                          icon: const Icon(
+                          icon: Icon(
                             MdiIcons.chevronLeft,
                             size: 32,
                           ),
@@ -73,7 +73,7 @@ class _DictSearchViewState extends State<DictSearchView> {
                         ),
                         IconButton(
                           onPressed: state.canIncLength ? _controller.incLength : null,
-                          icon: const Icon(
+                          icon: Icon(
                             MdiIcons.chevronRight,
                             size: 32,
                           ),

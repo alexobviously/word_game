@@ -45,7 +45,7 @@ class _TopPlayersViewState extends State<TopPlayersView> {
                     padding: const EdgeInsets.all(8.0),
                     child: NeumorphicButton(
                       onPressed: () => setState(() {}),
-                      child: const Icon(MdiIcons.refresh),
+                      child: Icon(MdiIcons.refresh),
                     ),
                   ),
                 ),

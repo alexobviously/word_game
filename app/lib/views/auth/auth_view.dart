@@ -41,8 +41,6 @@ class _AuthViewState extends State<AuthView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     return BlocListener<AuthController, AuthState>(
       listener: (context, state) {
         if (state.loggedIn) {
@@ -77,7 +75,7 @@ class _AuthViewState extends State<AuthView> {
                     padding: const EdgeInsets.all(32.0),
                     child: PageView(
                       controller: _controller,
-                      children: [
+                      children: const [
                         LoginForm(),
                         RegisterForm(),
                       ],

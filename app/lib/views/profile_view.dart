@@ -192,7 +192,7 @@ class _ProfileViewState extends State<ProfileView> {
           barTouchData: BarTouchData(
             enabled: true,
             touchTooltipData: BarTouchTooltipData(
-              tooltipBgColor: Colors.white,
+              // tooltipBgColor: Colors.white, // TODO: what is this now?
               fitInsideVertically: true,
               getTooltipItem: (_, __, c, ___) => BarTooltipItem(c.fromY.toStringAsFixed(0), textTheme.bodyMedium!),
             ),

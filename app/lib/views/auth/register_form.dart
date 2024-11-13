@@ -27,6 +27,7 @@ class _RegisterFormState extends State<RegisterForm> {
   void _register() async {
     if (_formKey.currentState!.validate()) {
       final _result = await auth().register(_username, _password);
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content:

@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart' as badges;
 import 'package:common/common.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
@@ -49,8 +48,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
     return BlocListener<AuthController, AuthState>(
       listener: (context, state) {
         if (!state.loggedIn && _tab != _practice) {
@@ -182,17 +179,7 @@ class _HomeViewState extends State<HomeView> {
               depth: 2,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
             ),
-            child: badges.Badge(
-              position: badges.BadgePosition.topEnd(top: -6, end: -15),
-              toAnimate: false,
-              shape: badges.BadgeShape.square,
-              badgeColor: Colours.victory.darken(0.5).withOpacity(0.5),
-              borderRadius: BorderRadius.circular(8),
-              padding: EdgeInsets.all(2.0),
-              elevation: 0,
-              badgeContent: Text('new', style: TextStyle(color: Colors.white70)),
-              child: Text('  Rush  ', style: textTheme.titleLarge),
-            ),
+            child: Text('  Rush  ', style: textTheme.titleLarge),
           ),
         ],
       ),
@@ -203,6 +190,7 @@ class _HomeViewState extends State<HomeView> {
 
   Future<void> _onCreate() async {
     final cfg = await showCreatorDialog(context);
+    if (!mounted) return;
     if (cfg != null) {
       BlocProvider.of<GameGroupManager>(context).createGroup(cfg.title, cfg.config).then((ok) {
         if (ok) sound().play(Sound.clickUp);
@@ -231,9 +219,8 @@ class _HomeViewState extends State<HomeView> {
                   padding: const EdgeInsets.all(8.0),
                   child: NeumorphicButton(
                     onPressed: () => state.working ? null : cubit.refresh(),
-                    child: state.working
-                        ? SpinKitFadingCircle(size: 24, color: Colors.black87)
-                        : const Icon(MdiIcons.refresh),
+                    child:
+                        state.working ? SpinKitFadingCircle(size: 24, color: Colors.black87) : Icon(MdiIcons.refresh),
                   ),
                 ),
               ],
